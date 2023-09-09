@@ -21,21 +21,21 @@ local Library = {}
 local Config = {}
 local ConfigUpdates = {}
 local Themes = {
-    ['Red Theme'] = {
-       BackgroundColor = Color3.fromRGB(30, 30, 30),
-       SidebarColor = Color3.fromRGB(35, 35, 35),
-       PrimaryTextColor = Color3.fromRGB(0, 125, 255),
-       SecondaryTextColor = Color3.fromRGB(255, 255, 255),
-       UIStrokeColor = Color3.fromRGB(50, 50, 50),
-       PrimaryElementColor = Color3.fromRGB(35, 35, 35),
-       SecondaryElementColor = Color3.fromRGB(45, 45, 45),
-       OtherElementColor = Color3.fromRGB(30, 30, 30),
-       ScrollBarColor = Color3.fromRGB(50, 50, 50),
-       PromptColor = Color3.fromRGB(50, 50, 50),
-       NotificationColor = Color3.fromRGB(30, 30, 30),
-       NotificationUIStrokeColor = Color3.fromRGB(50, 50, 50)
+    ['Default'] = {
+        BackgroundColor = Color3.fromRGB(25, 25, 25),
+        SidebarColor = Color3.fromRGB(30, 30, 30),
+        PrimaryTextColor = Color3.fromRGB(255, 255, 255),
+        SecondaryTextColor = Color3.fromRGB(135, 135, 135),
+        UIStrokeColor = Color3.fromRGB(60, 60, 60),
+        PrimaryElementColor = Color3.fromRGB(30, 30, 30),
+        SecondaryElementColor = Color3.fromRGB(50, 50, 50),
+        OtherElementColor = Color3.fromRGB(25, 25, 25),
+        ScrollBarColor = Color3.fromRGB(125, 125, 125),
+        PromptColor = Color3.fromRGB(40, 40, 40),
+        NotificationColor = Color3.fromRGB(25, 25, 25),
+        NotificationUIStrokeColor = Color3.fromRGB(125, 125, 125)
     },
-    ['Green Theme'] = {
+    ['Lighter'] = {
         BackgroundColor = Color3.fromRGB(40, 40, 40),
         SidebarColor = Color3.fromRGB(45, 45, 45),
         PrimaryTextColor = Color3.fromRGB(255, 255, 255),
@@ -49,7 +49,7 @@ local Themes = {
         NotificationColor = Color3.fromRGB(40, 40, 40),
         NotificationUIStrokeColor = Color3.fromRGB(125, 125, 125)
     },
-    ['Blue Theme'] = {
+    ['Light'] = {
         BackgroundColor = Color3.fromRGB(255, 255, 255),
         SidebarColor = Color3.fromRGB(200, 200, 200),
         PrimaryTextColor = Color3.fromRGB(0, 0, 0),
@@ -948,12 +948,12 @@ function Library:CreateWindow(HubName, GameName, IntroText, IntroIcon, ImprovePe
         HasCustom = true
     elseif type(Theme) == 'string' then
         Theme = Theme:lower()
-        if Theme == 'Red Theme' then
-            Theme = Themes['Red Theme']
-        if Theme == 'Green Theme' then
-            Theme = Themes['Green Theme']
-        if Theme == 'Blue Theme' then
-            Theme = Themes['Blue Theme']
+        if Theme == 'default' then
+            Theme = Themes['Default']
+        elseif Theme == 'lighter' then
+            Theme = Themes['Lighter']
+        elseif Theme == 'light' then
+            Theme = Themes['Light']
         end
     end
     local NewTable = {}
@@ -1321,8 +1321,8 @@ function Library:CreateWindow(HubName, GameName, IntroText, IntroIcon, ImprovePe
                     writefile('VisualUILibraryCurrentTheme.json', HttpService:JSONEncode(NewTable))
                     Config['Theme_4z3s4QrUhfqt703FmiAe'] = HttpService:JSONEncode(NewTable)
                     ChangeThemeValue()
-                elseif NewTheme == 'Red Theme' then
-                    Theme = Themes['Red Theme']
+                elseif NewTheme == 'default' then
+                    Theme = Themes['Default']
                     local NewTable = {}
                     for Index, Value in next, Theme do
                         NewTable[Index] = Utility:SplitColor(Value)
@@ -1330,8 +1330,8 @@ function Library:CreateWindow(HubName, GameName, IntroText, IntroIcon, ImprovePe
                     writefile('VisualUILibraryCurrentTheme.json', HttpService:JSONEncode(NewTable))
                     Config['Theme_4z3s4QrUhfqt703FmiAe'] = HttpService:JSONEncode(NewTable)
                     ChangeThemeValue()
-                elseif NewTheme == 'Green Theme' then
-                    Theme = Themes['Green Theme']
+                elseif NewTheme == 'lighter' then
+                    Theme = Themes['Lighter']
                     local NewTable = {}
                     for Index, Value in next, Theme do
                         NewTable[Index] = Utility:SplitColor(Value)
@@ -1339,8 +1339,8 @@ function Library:CreateWindow(HubName, GameName, IntroText, IntroIcon, ImprovePe
                     writefile('VisualUILibraryCurrentTheme.json', HttpService:JSONEncode(NewTable))
                     Config['Theme_4z3s4QrUhfqt703FmiAe'] = HttpService:JSONEncode(NewTable)
                     ChangeThemeValue()
-                elseif NewTheme == 'Blue Theme' then
-                    Theme = Themes['Blue Theme']
+                elseif NewTheme == 'light' then
+                    Theme = Themes['Light']
                     local NewTable = {}
                     for Index, Value in next, Theme do
                         NewTable[Index] = Utility:SplitColor(Value)
